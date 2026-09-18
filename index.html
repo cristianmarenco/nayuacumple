@@ -1,0 +1,540 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feliz Cumpleaños 💖</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* FONDO DECORATIVO */
+
+        .decoracion {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .corazon,
+        .estrella,
+        .brillo {
+            position: absolute;
+            animation: flotar 5s ease-in-out infinite;
+        }
+
+        .corazon {
+            font-size: 30px;
+        }
+
+        .estrella {
+            font-size: 25px;
+        }
+
+        .brillo {
+            font-size: 18px;
+        }
+
+        .c1 { left: 8%; top: 15%; animation-delay: 0s; }
+        .c2 { left: 85%; top: 20%; animation-delay: 1s; }
+        .c3 { left: 15%; bottom: 15%; animation-delay: 2s; }
+        .c4 { right: 10%; bottom: 18%; animation-delay: 3s; }
+
+        .e1 { left: 20%; top: 7%; }
+        .e2 { right: 20%; top: 10%; animation-delay: 1s; }
+        .e3 { left: 5%; bottom: 30%; animation-delay: 2s; }
+        .e4 { right: 5%; bottom: 35%; animation-delay: 3s; }
+
+        .b1 { left: 30%; top: 20%; animation-delay: 1s; }
+        .b2 { right: 30%; top: 25%; animation-delay: 2s; }
+        .b3 { left: 25%; bottom: 20%; animation-delay: 3s; }
+        .b4 { right: 25%; bottom: 25%; animation-delay: 4s; }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+
+        /* CONTENEDOR PRINCIPAL */
+
+        .contenedor {
+            width: 100%;
+            max-width: 900px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+
+        /* SOBRE */
+
+        .zona-sobre {
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .zona-sobre:hover {
+            transform: scale(1.05);
+        }
+
+        .sobre {
+            width: 330px;
+            height: 220px;
+            margin: auto;
+            position: relative;
+            background: #e85d75;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        /* Parte inferior del sobre */
+
+        .sobre::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-left: 165px solid transparent;
+            border-right: 165px solid transparent;
+            border-bottom: 120px solid #d94b65;
+            z-index: 2;
+        }
+
+        /* Solapas laterales */
+
+        .sobre::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top: 110px solid transparent;
+            border-bottom: 110px solid transparent;
+            border-left: 165px solid #f16b82;
+        }
+
+        .tapa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid transparent;
+            border-right: 165px solid transparent;
+            border-top: 120px solid #f47b91;
+            transform-origin: top;
+            transition: transform 1s ease;
+            z-index: 5;
+        }
+
+        .corazon-sobre {
+            position: absolute;
+            z-index: 10;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            transition: 0.5s;
+        }
+
+        .texto-sobre {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+
+        /* MENSAJE */
+
+        .carta {
+            display: none;
+            animation: aparecer 1.5s ease forwards;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .titulo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 75px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow:
+                0 4px 10px rgba(160, 30, 70, 0.4);
+            margin-bottom: 15px;
+            animation: titulo 2s ease infinite alternate;
+        }
+
+        @keyframes titulo {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.04);
+            }
+        }
+
+
+        /* FOTO */
+
+        .marco-foto {
+            width: 260px;
+            height: 260px;
+            margin: 90px auto 25px;
+            padding: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25),
+                0 0 0 8px rgba(255,255,255,0.3);
+        }
+
+        .marco-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+
+        /* TEXTO */
+
+        .mensaje {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(255,255,255,0.85);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            color: #6d2940;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .nombre {
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            color: #d83f68;
+            margin-bottom: 10px;
+        }
+
+
+        /* CONFETI */
+
+        .confeti {
+            position: fixed;
+            width: 10px;
+            height: 18px;
+            top: -30px;
+            animation: caer 4s linear forwards;
+            z-index: 20;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+
+        /* BOTÓN */
+
+        .boton-musica {
+            margin-top: 25px;
+            border: none;
+            background: #d83f68;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+
+            .sobre {
+                width: 270px;
+                height: 180px;
+            }
+
+            .sobre::before {
+                border-left-width: 135px;
+                border-right-width: 135px;
+            }
+
+            .sobre::after {
+                border-left-width: 135px;
+            }
+
+            .tapa {
+                border-left-width: 135px;
+                border-right-width: 135px;
+            }
+
+            .titulo {
+                font-size: 55px;
+            }
+
+            .marco-foto {
+                width: 210px;
+                height: 210px;
+            }
+
+            .mensaje {
+                font-size: 16px;
+                padding: 22px;
+            }
+
+            .nombre {
+                font-size: 34px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- DECORACIÓN -->
+
+    <div class="decoracion">
+
+        <div class="corazon c1">💖</div>
+        <div class="corazon c2">💕</div>
+        <div class="corazon c3">💗</div>
+        <div class="corazon c4">💞</div>
+
+        <div class="estrella e1">✨</div>
+        <div class="estrella e2">⭐</div>
+        <div class="estrella e3">✨</div>
+        <div class="estrella e4">🌟</div>
+
+        <div class="brillo b1">💫</div>
+        <div class="brillo b2">✨</div>
+        <div class="brillo b3">💫</div>
+        <div class="brillo b4">✨</div>
+
+    </div>
+
+
+    <div class="contenedor">
+
+        <!-- SOBRE -->
+
+        <div class="zona-sobre" id="sobre" onclick="abrirCarta()">
+
+            <div class="sobre">
+
+                <div class="tapa" id="tapa"></div>
+
+                <div class="corazon-sobre">
+                    💌
+                </div>
+
+            </div>
+
+            <div class="texto-sobre">
+                ✨ Haz clic para abrir tu sorpresa ✨
+            </div>
+
+        </div>
+
+
+        <!-- CARTA -->
+
+        <div class="carta" id="carta">
+
+            <h1 class="titulo">
+                ¡FELICIDADES! 🎉
+            </h1>
+
+            <div class="marco-foto">
+
+                <!-- CAMBIA "foto.jpg" POR EL NOMBRE DE TU FOTO -->
+
+                <img src="foto.jpg" alt="Foto de mi amiga">
+
+            </div>
+
+
+            <div class="mensaje">
+
+                <div class="nombre">
+                    ¡Feliz cumpleaños! 💖
+                </div>
+
+                <p>
+                    Hoy es un día muy especial porque celebramos
+                    la vida de una persona maravillosa. 🥰
+                </p>
+
+                <br>
+
+                <p>
+                    Espero que este nuevo año de vida esté lleno
+                    de momentos bonitos, sueños cumplidos,
+                    muchas sonrisas y personas que te quieran
+                    muchísimo. ✨
+                </p>
+
+                <br>
+
+                <p>
+                    Gracias por ser una persona tan especial.
+                    Que nunca te falten razones para sonreír
+                    y que todos tus deseos se hagan realidad. 💕
+                </p>
+
+                <br>
+
+                <p>
+                    ¡Disfruta muchísimo tu día!
+                    🎂🎈🎁
+                </p>
+
+            </div>
+
+            <button class="boton-musica" onclick="musica()">
+                🎵 Música
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MÚSICA -->
+
+    <audio id="audio" loop>
+        <source src="cumpleanos.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        function abrirCarta() {
+
+            const tapa = document.getElementById("tapa");
+            const sobre = document.getElementById("sobre");
+            const carta = document.getElementById("carta");
+
+            tapa.style.transform = "rotateX(180deg)";
+
+            setTimeout(() => {
+
+                sobre.style.display = "none";
+
+                carta.style.display = "block";
+
+                lanzarConfeti();
+
+            }, 900);
+
+        }
+
+
+        function lanzarConfeti() {
+
+            const simbolos = [
+                "🎉",
+                "✨",
+                "💖",
+                "💕",
+                "🎊",
+                "⭐",
+                "🌸"
+            ];
+
+            for (let i = 0; i < 80; i++) {
+
+                const confeti = document.createElement("div");
+
+                confeti.className = "confeti";
+
+                confeti.innerHTML =
+                    simbolos[Math.floor(Math.random() * simbolos.length)];
+
+                confeti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confeti.style.animationDuration =
+                    (Math.random() * 3 + 3) + "s";
+
+                confeti.style.fontSize =
+                    (Math.random() * 12 + 10) + "px";
+
+                document.body.appendChild(confeti);
+
+                setTimeout(() => {
+                    confeti.remove();
+                }, 6000);
+
+            }
+
+        }
+
+
+        function musica() {
+
+            const audio = document.getElementById("audio");
+
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
